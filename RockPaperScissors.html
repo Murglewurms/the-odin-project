@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="Murglewurms">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <script>
+    
+  // Set-Up
+  var allOptions = ["rock","paper","scissors"]; 
+  let computerSelection;
+  let playerSelection;
+    
+  // Computer randomly selects one of the three [allOptions]
+  function computerPlay() {
+    computerSelection = allOptions[Math.floor(Math.random()*allOptions.length)];
+  }
+  
+  // Player selection.toLowerCase + check
+  function playerPlay() {
+    playerChoice = prompt("rock, paper, or scissors?");
+    playerSelection = playerChoice.toLowerCase();
+   /*   if (playerSelection === "rock") {
+    *   return "`You've chosen ${playerSelection}`;
+    * } else if (playerSelection === "paper") {
+    *   return "You've chosen paper.";
+    * } else if (playerSelection === "scissors") {
+    *   return "You've chosen scissors.";
+    * }
+    * return "That was not one of the options.";
+    */
+  }
+    
+    
+  // Single round (Combining the previous two functions)
+  function playRound(playerSelection, computerSelection) {
+
+      
+  }  
+
+    
+  </script>
+</body>
+</html>
