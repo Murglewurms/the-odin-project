@@ -8,41 +8,49 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="Murglewurms">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
 
 </head>
 
 <body>
   <script>
     
-  // Set-Up
-  var allOptions = ["rock","paper","scissors"]; 
-  let computerSelection;
+// Set-Up
+  const allOptions = ["rock","paper","scissors"]; 
   let playerSelection;
     
-  // Computer randomly selects one of the three [allOptions]
+// Computer randomly selects one of the three [allOptions]
   function computerPlay() {
-    computerSelection = allOptions[Math.floor(Math.random()*allOptions.length)];
+    let computerSelection = allOptions[Math.floor(Math.random()*allOptions.length)];
+    return computerSelection;
   }
   
-  // Player selection.toLowerCase + check
+// Player selection.toLowerCase 
   function playerPlay() {
-    playerChoice = prompt("rock, paper, or scissors?");
-    playerSelection = playerChoice.toLowerCase();
-   /*   if (playerSelection === "rock") {
-    *   return "`You've chosen ${playerSelection}`;
-    * } else if (playerSelection === "paper") {
-    *   return "You've chosen paper.";
-    * } else if (playerSelection === "scissors") {
-    *   return "You've chosen scissors.";
-    * }
-    * return "That was not one of the options.";
-    */
+    let playerChoice = prompt("rock, paper, or scissors?");
+    return playerChoice.toLowerCase();
   }
     
-    
-  // Single round (Combining the previous two functions)
+// Single round (Combining the previous two functions)
   function playRound(playerSelection, computerSelection) {
+    playerSelection = playerPlay();
+    computerSelection = computerPlay();
+    if (playerSelection === "rock" && computerSelection === "paper") {
+      return "Lose; paper beats rock";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+      return "Win; rock beats scissors";
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+      return `Lose, ${computerSelection} beats ${playerSelection}`;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+      return `Win, ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+      return "Lose; rock beats scissors";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+      return "Win; scissors beats paper";
+    } else if (playerSelection === computerSelection) {
+      return "Tie!";
+    } else {
+      return "That's not a valid option.";
+    }
 
       
   }  
