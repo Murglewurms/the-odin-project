@@ -79,8 +79,10 @@
       console.log("Round " + round + " result: " + roundMessage);
     }
     if (finalScore > 0) {
+      finalScore = 0;
       return ("Lucky stars! You won!");
     } else {
+      finalScore = 0;
       return ("Not so lucky today, you lost!");
     }
 
