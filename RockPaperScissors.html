@@ -17,6 +17,8 @@
 // Set-Up
   const allOptions = ["rock","paper","scissors"]; 
   let playerSelection;
+  let finalScore = 0;
+  let roundMessage = ""
     
 // Computer randomly selects one of the three [allOptions]
   function computerPlay() {
@@ -34,27 +36,55 @@
   function playRound(playerSelection, computerSelection) {
     playerSelection = playerPlay();
     computerSelection = computerPlay();
-    if (playerSelection === "rock" && computerSelection === "paper") {
-      return "Lose; paper beats rock";
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-      return "Win; rock beats scissors";
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-      return `Lose, ${computerSelection} beats ${playerSelection}`;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-      return `Win, ${playerSelection} beats ${computerSelection}`;
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-      return "Lose; rock beats scissors";
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-      return "Win; scissors beats paper";
-    } else if (playerSelection === computerSelection) {
-      return "Tie!";
-    } else {
-      return "That's not a valid option.";
-    }
 
-      
+
+    if (playerSelection === "rock" && computerSelection === "paper") {
+      roundMessage = ("Lose; paper beats rock");
+        finalScore--;
+
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+      roundMessage = ("Win; rock beats scissors");
+        finalScore++;
+
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        finalScore--;
+      roundMessage = ("Lose, scissors beats paper");
+
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        finalScore++;
+      roundMessage = ("Win, paper beats rock");
+
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+      roundMessage = ("Lose; rock beats scissors");
+        finalScore--;
+
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+      roundMessage = ("Win; rock beats scissors");
+        finalScore++;
+
+    } else if (playerSelection === computerSelection) {
+      console.log("Tie! Play again!");
+      playRound(playerSelection, computerSelection);
+    } else {
+      console.log("That's not a valid option. Try again.");
+      playRound(playerSelection, computerSelection);
+    }
   }  
 
+// game(); 5 rounds, win/lose shown at the end of round, and the end of game.    
+  function game() {
+
+    for (let round=1; round<=5; round++) {
+      let roundResult = playRound();
+      console.log("Round " + round + " result: " + roundMessage);
+    }
+    if (finalScore > 0) {
+      console.log("Lucky stars! You won!");
+    } else {
+      console.log("Not so lucky today, you lost!");
+    }
+
+  } 
     
   </script>
 </body>
